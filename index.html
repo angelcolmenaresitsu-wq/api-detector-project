@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de APIs del Navegador</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <div class="max-w-xl w-full bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-8">
+        <h1 class="text-3xl font-extrabold text-center mb-2 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+            Detector de APIs Web
+        </h1>
+        <p class="text-slate-400 text-center mb-6 text-sm">
+            Verificando la compatibilidad de las APIs de tu navegador en tiempo real.
+        </p>
+
+        <div id="api-list" class="space-y-3">
+            <!-- Los resultados se inyectarán aquí -->
+        </div>
+    </div>
+
+    <script>
+        const apisToTest = [
+            { name: "Geolocalización", check: () => 'geolocation' in navigator },
+            { name: "Almacenamiento Local (LocalStorage)", check: () => 'localStorage' in window },
+            { name: "IndexedDB", check: () => 'indexedDB' in window },
+            { name: "Notificaciones (Notifications)", check: () => 'Notification' in window },
+            { name: "Service Worker", check: () => 'serviceWorker' in navigator },
+            { name: "Cámara / MediaDevices", check: () => navigator.mediaDevices && 'getUserMedia' in navigator.mediaDevices },
+            { name: "Bluetooth", check: () => 'bluetooth' in navigator },
+            { name: "Batería (Battery API)", check: () => 'getBattery' in navigator }
+        ];
+
+        const container = document.getElementById('api-list');
+
+        apisToTest.forEach(api => {
+            const isSupported = api.check();
+            const card = document.createElement('div');
+            card.className = "flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl transition hover:border-slate-600";
+            
+            card.innerHTML = `
+                <span class="font-medium text-slate-200">${api.name}</span>
+                <span class="px-3 py-1 text-xs font-semibold rounded-full ${isSupported ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'}">
+                    ${isSupported ? '✔ Disponible' : '✖ No Disponible'}
+                </span>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
