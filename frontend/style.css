@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0b0f0d;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.badge {
+    background: #112a1c;
+    color: #22c55e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    float: right;
+    border: 1px solid #1f3d2b;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+h1 span {
+    color: #22c55e;
+}
+
+.challenge-box {
+    background: #112217;
+    border: 1px solid #1f3d2b;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.challenge-box h2 {
+    color: #22c55e;
+    margin-bottom: 8px;
+}
+
+.grid-apis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.api-card {
+    background: #121815;
+    border: 1px solid #212c25;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.api-card.supported {
+    border-color: #166534;
+    background: #0f2418;
+}
+
+.status-icon {
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #22c55e;
+    color: #0b0f0d;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    font-size: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #16a34a;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+#status-msg {
+    margin-top: 15px;
+    font-weight: 600;
+}
